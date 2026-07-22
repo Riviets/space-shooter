@@ -46,7 +46,7 @@ class Ship(Image):
         shot = Shot(self.direction)
         shot.center_x = self.center_x
         shot.y = self.top if self.direction == DIR_UP else self.y - shot.height
-        self.parent.parent.parent.parent.bullets.append(shot)
+        self.parent.parent.parent.parent.cartridge.append(shot)
         self.parent.add_widget(shot)
 
     def update(self):          
@@ -77,7 +77,7 @@ class EnemyShip(Ship):
     def update(self):
         super().update()
         self.pos[1] -= dp(3)
-        if self.frame % 100 == 0:
+        if self.frame % 100 == 0:   
             self.shot()
         self.frame += 1
 
@@ -90,7 +90,7 @@ class GameScreen(MDScreen):
         self.ship = self.ids.ship
         self.enemyShips = []
 
-        self.bullets = []
+        self.cartridge = []
 
         self.pauseMenu = None
 
@@ -113,14 +113,14 @@ class GameScreen(MDScreen):
         for ship in self.enemyShips:
             ship.update()
 
-        self.manage_bullets()
+        self.manage_cartridge()
 
-    def manage_bullets(self):
-        for bullet in self.bullets[:]:
+    def manage_cartridge(self):
+        for bullet in self.cartridge[:]:
             bullet.y += BULLET_SPEED * bullet.direction
             if bullet.y > Window.height or bullet.top < 0:
                 self.ids.front.remove_widget(bullet)
-                self.bullets.remove(bullet)
+                self.cartridge.remove(bullet)
 
     def pressKey(self, key):
         self.eventkeys[key] = True
