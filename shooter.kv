@@ -5,18 +5,67 @@
         spacing: '20dp'
 
         MDIconButton:
-            icon: 'cogs'
+            icon: 'cog'
+            pos_hint: {'right': 1, 'top': 1}
             icon_size: '40dp'
-            pos_hint: {"right": 1, "top": 1}
-
+            
         MDLabel:
             text: "Shooter Game"
-            font_size: '35dp'
-            size_hint_y: 0.2
+            font_size: '30dp'
             halign: 'center'
+            size_hint_y: 0.2
 
         Image:
-            source: 'spaceship.png'
+            source: 'assets/images/rocket.png'
+            size_hint_y: 0.7
+            allow_stretch: True
 
         MDRaisedButton:
-            text: 'GAME'
+            text: 'Game'
+            pos_hint: {'center_x': 0.5}
+
+<Ship@Image>:
+    source: 'assets/images/rocket.png'
+    size_hint: None, None
+    
+<GameScreen>:
+    MDFloatLayout:
+        MDFloatLayout:
+            id: game
+
+            MDFloatLayout:
+                id: back
+
+            MDFloatLayout:
+                id: front
+                
+                Ship:
+                    id: ship
+                    center: root.center
+
+        MDFloatLayout:
+            id: interface
+
+            MDBoxLayout:
+                padding: '20dp'
+                spacing: '20dp'
+
+                MDFloatingActionButton:
+                    icon: 'arrow-left-bold'
+                    on_press: root.presskey('left')
+                    on_release: root.releasekey('left')
+
+                MDFloatingActionButton:
+                    icon: 'arrow-right-bold'
+                    on_press: root.presskey('right')
+                    on_release: root.releasekey('right')
+
+                MDFloatingActionButton:
+                    icon: 'arrow-up-bold'
+                    on_press: root.presskey('shot')
+                    on_release: root.releasekey('shot')
+
+<Shot>:
+    size_hint: None, None
+    size: 20, 20
+    md_bg_color: app.theme_cls.primary_color
