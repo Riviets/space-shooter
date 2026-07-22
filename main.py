@@ -18,8 +18,8 @@ class ShooterApp(MDApp):
         self.theme_cls.primary_palette = "Purple"
 
         sm = MDScreenManager()
-        sm.add_widget(GameScreen(name='game'))
         sm.add_widget(MainScreen(name='main'))
+        sm.add_widget(GameScreen(name='game'))
         return sm
 
 app = ShooterApp()
