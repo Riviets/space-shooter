@@ -39,10 +39,10 @@ class GameScreen(MDScreen):
         for bullet in self.cartridge:
             bullet.pos[1] += BULLET_SPEED
 
-    def presskey(self, key):
+    def pressKey(self, key):
         self.eventkeys[key] = True
 
-    def releasekey(self, key):
+    def releaseKey(self, key):
         self.eventkeys[key] = False
 
     def moveLeft(self):
