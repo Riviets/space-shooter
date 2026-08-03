@@ -28,7 +28,10 @@
     size_hint: None, None
     
 <PlayerShip@Ship>:
-    source: 'assets/images/rocket.png'
+    source: 'spaceship.png'
+
+<EnemyShip@Ship>:
+    source: 'ufo.png'
 
 <GameScreen>:
     MDFloatLayout:
@@ -47,6 +50,19 @@
 
         MDFloatLayout:
             id: interface
+
+            MDBoxLayout:
+                padding: '20dp'
+                spacing: '20dp'
+
+                Widget:
+
+                MDFloatingActionButton:
+                    icon: 'pause'
+                    pos_hint: {'top': 1}
+                    on_press: root.show_menu()
+
+                Widget:
 
             MDBoxLayout:
                 padding: '20dp'
