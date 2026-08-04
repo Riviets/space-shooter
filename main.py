@@ -27,6 +27,7 @@ DIR_DOWN = -1
 
 SPAWN_ENEMY_TIME = 2
 
+
 class Shot(MDWidget):
     def __init__(self, direction, **kwargs):
         super().__init__(**kwargs)
@@ -100,6 +101,7 @@ class GameScreen(MDScreen):
 
         self.pauseMenu = None
         self.spawn_delay = SPAWN_ENEMY_TIME
+        self.time_last_spawn = 0
 
         Window.bind(on_key_down=self._on_key_down)
         Window.bind(on_key_up=self._on_key_up)
