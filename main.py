@@ -25,6 +25,7 @@ SHIP_SPEED = dp(2)
 DIR_UP = 1
 DIR_DOWN = -1
 
+SPAWN_ENEMY_TIME = 2
 
 class Shot(MDWidget):
     def __init__(self, direction, **kwargs):
@@ -98,6 +99,7 @@ class GameScreen(MDScreen):
         self.cartridge = []
 
         self.pauseMenu = None
+        self.spawn_delay = SPAWN_ENEMY_TIME
 
         Window.bind(on_key_down=self._on_key_down)
         Window.bind(on_key_up=self._on_key_up)
