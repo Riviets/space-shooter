@@ -22,9 +22,10 @@
 
         MDRaisedButton:
             text: 'Game'
+            font_size: '30sp'
+            bold: True
             pos_hint: {'center_x': 0.5}
-            on_press:
-                root.manager.current = 'game'
+            on_press: root.manager.current = 'game'
 
 <Ship@Image>:
     size_hint: None, None
@@ -33,7 +34,7 @@
     source: 'spaceship.png'
 
 <EnemyShip@Ship>:
-    source: 'ufo.png'  
+    source: 'ufo.png'
 
 <GameScreen>:
     MDFloatLayout:
@@ -48,7 +49,7 @@
                 
                 PlayerShip:
                     id: ship
-                    pos: root.center_x, dp(50)
+                    center: root.center
 
         MDFloatLayout:
             id: interface
@@ -80,8 +81,6 @@
                     on_press: root.pressKey('right')
                     on_release: root.releaseKey('right')
 
-                Widget:
-
                 MDFloatingActionButton:
                     icon: 'arrow-up-bold'
                     on_press: root.pressKey('shot')
@@ -99,23 +98,24 @@
         spacing: '20dp'
 
         MDLabel:
-            text: "GAME OVER"
-            font_size: '50dp'
+            text: 'GAME OVER'
+            font_size: '35sp'
             halign: 'center'
-            color: app.theme_cls.accent_color
 
         MDIcon:
             icon: 'skull'
             font_size: '100dp'
-            size_hint: None, None
             pos_hint: {'center_x': 0.5}
-            color: app.theme_cls.accent_color
 
-        Widget:
-            size_hint_y: 0.5
+        MDBoxLayout:
+            spacing: '85dp'
 
-        MDRaisedButton:
-            text: 'Menu'
-            pos_hint: {'center_x': 0.5}
-            on_press:
-                root.manager.current = 'main'
+            MDRaisedButton:
+                text: 'Menu'
+                font_size: '20sp'
+                on_press: root.manager.current = 'main'
+
+            MDRaisedButton:
+                text: 'Restart'
+                font_size: '20sp'
+                on_press: root.manager.current = 'game'
